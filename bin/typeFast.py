@@ -24,11 +24,11 @@ class Game:
         self.RESULT_C = (255,70,70)
         pygame.init()
         self.open_img = pygame.image.load('typing-speed-open.jpg')
-        self.open_img = pygame.transform.scale(self.open_img, (self.w,self.h))
-        self.bg = pygame.image.load('background.jpg')
-        self.bg = pygame.transform.scale(self.bg, (500,750))
-        self.screen = pygame.display.set_mode((self.w,self.h))
-        pygame.display.set_caption('Type Speed test')
+        self.open_img = pygame.transform.scale(self.open_img, (self.w, self.h))
+        self.bg = pygame.image.load('typing-speed-open.jpg')
+        self.bg = pygame.transform.scale(self.bg, (1000, 750))
+        self.screen = pygame.display.set_mode((self.w, self.h))
+        pygame.display.set_caption('type Fast')
 
     def draw_text(self, screen, msg, y, fsize, color):
         font = pygame.font.Font(None, fsize)
@@ -70,12 +70,16 @@ class Game:
             self.results = 'Time:' + str(round(self.total_time)) + "secs Accuracy:" + str(round(self.accuracy)) + "%" + 'Words per minute: ' + str(round(self.wpm))
 
             # draw icon img
+
             self.time_img = pygame.image.load('icon.jpg')
             self.time_img = pygame.transform.scale(self.time_img, (150, 150))
 
             # screen.blit(self.time_img, (80, 320))
-            screen.blit(self.time_img, (self.w / 2 - 75, self.h - 140))
-            self.draw_text(screen, "Reset", self.h - 70, 26, (100, 100, 100))
+            #screen.blit(self.time_img, (self.w / 2 - 75, self.h - 140))
+
+            pygame.draw.rect(self.screen, (255, 192, 25), (300, 320, 320, 340), 3)
+            self.draw_text(screen, "Reset", self.h - 70, 26, (255, 255, 255))
+
             print(self.results)
             pygame.display.update()
 
@@ -86,9 +90,12 @@ class Game:
             clock = pygame.time.Clock()
             self.screen.fill((0, 0, 0), (50, 250, 650, 50))
             pygame.draw.rect(self.screen, self.HEAD_C, (50, 250, 650, 50), 2)
+
             # update the text of user input
             self.draw_text(self.screen, self.input_text, 274, 26, (250, 250, 250))
+
             pygame.display.update()
+
             for event in pygame.event.get():
                 if event.type == QUIT:
                     self.running = False
@@ -139,7 +146,7 @@ class Game:
         # drawing heading
         self.screen.fill((0, 0, 0))
         self.screen.blit(self.bg, (0, 0))
-        msg = "Typing Speed Test"
+        msg = "type Fast"
         self.draw_text(self.screen, msg, 80, 80, self.HEAD_C)
         # draw the rectangle for input box
         pygame.draw.rect(self.screen, (255, 192, 25), (50, 250, 650, 50), 2)
