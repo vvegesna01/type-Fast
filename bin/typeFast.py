@@ -76,9 +76,7 @@ class Game:
 
             # screen.blit(self.time_img, (80, 320))
             #screen.blit(self.time_img, (self.w / 2 - 75, self.h - 140))
-
-            pygame.draw.rect(self.screen, (255, 192, 25), (300, 320, 320, 340), 3)
-            self.draw_text(screen, "Reset", self.h - 70, 26, (255, 255, 255))
+            self.draw_text(screen, "Reset", self.h - 70, 26, (200, 200, 200))
 
             print(self.results)
             pygame.display.update()
